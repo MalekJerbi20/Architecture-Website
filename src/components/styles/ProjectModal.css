@@ -1,0 +1,60 @@
+/* === Modal Overlay === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* === Modal Content === */
+.modal-content {
+  background-color: #1a1a1a;
+  padding: 3rem;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 90%;
+  color: white;
+  text-align: center;
+  overflow-y: auto;
+  max-height: 90vh;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+/* === Modal Images === */
+.modal-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.modal-images img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* === Close Button === */
+.modal-content button {
+  margin-top: 2rem;
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', serif;
+  transition: background 0.3s ease;
+}
+
+.modal-content button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}

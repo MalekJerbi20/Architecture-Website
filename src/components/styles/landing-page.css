@@ -1,0 +1,80 @@
+body  {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.landing-container {
+  background-color: #272727ff;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+
+}
+.hero-text{
+  color: white;
+  margin-top: 0.5rem;
+  font-family: 'TTRicks';
+  padding-left: 2rem;
+  padding-right: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  font-size: 6rem;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom:0;
+}
+.hero-subtitle {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+   justify-content: center;
+  font-size: 2rem;
+   margin-top: -6rem;
+}
+.image-container {
+   width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+
+}
+.image {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; 
+  padding-right: -1rem;
+  margin-top: -38rem;
+}
+.image img {
+  width: 100%;
+  height: auto;
+  max-width: 955px; 
+  max-height: 100%;
+   display: block;
+   margin: 0 auto;
+   margin-right: -4rem;
+
+}
+
+@media (max-width: 768px) {
+  .landing-image {
+    width: 100%;
+    padding: 0;
+  }
+
+  .landing-hero-text {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
