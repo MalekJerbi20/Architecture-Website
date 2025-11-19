@@ -27,7 +27,7 @@ export default function ProjectModal({ project, onClose }) {
               <img key={i} src={img} alt={`Detail ${i}`} />
             ))}
           </div>
-          <button onClick={onClose}>Close</button>
+          <button onClick={onClose} className="close-btn">Close</button>
         </motion.div>
       </motion.div>
     </AnimatePresence>

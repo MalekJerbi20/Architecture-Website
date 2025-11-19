@@ -1,6 +1,214 @@
-.about-container {
-    background-color: #272727ff;
-    min-height: 100vh;
-  padding: 4rem 2rem;
-
+/* General container for the whole section */
+.about-us-container {
+  display: flex;
+  justify-content: center; /* Center the entire block */
+  align-items: center;
+  min-height: 100vh; /* Takes full viewport height */
+  background-color: #1a3320ff; /* Very light off-white background */
+  font-family: 'Montserrat', sans-serif; /* Or another modern sans-serif like Avenir Next */
+  padding: 40px; /* Overall padding for the section */
+  box-sizing: border-box; /* Include padding in element's total width and height */
+  margin: 0 auto; /* Center the max-width container */
+  width: 100%;
 }
+
+.who-we-are-wrapper {
+  display: flex;
+  align-items: center; /* Vertically align text and line */
+  margin-right: 60px; /* Space between "WHO WE ARE" and content */
+  opacity: 0;
+   transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+
+.who-we-are-heading {
+  font-size: 5.5em; /* Large font size */
+  font-weight: 300; /* Lighter weight for modern look */
+  letter-spacing: 5px;
+  line-height: 1; /* Tightly packed lines */
+  color: #ffffffff;
+  margin: 0; /* Remove default margin */
+  text-align: left; /* Align text right before the line */
+  padding-right: 30px; /* Space before the vertical line */
+  
+}
+
+.vertical-line {
+  width: 1px;
+  height: 300px; /* Adjust height as needed */
+  background-color: #ccc; /* Lighter gray for the line */
+  opacity: 0;
+   transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Wrapper for the main text content */
+.content-wrapper {
+  flex: 1; /* Allows content to take available space */
+  max-width: 500px; /* Limit text width for readability */
+  margin-right: 60px; /* Space between content and image */
+  opacity: 0;
+   transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.our-philosophy-heading {
+  font-size: 2.2em;
+  font-weight: 500; /* Medium weight */
+  color: #ffffffff;
+  margin-top: 0;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 10px; /* Space for the underline */
+  opacity: 0;
+   transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.our-philosophy-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 70px; /* Length of the underline */
+  height: 2px;
+  background-color: #6a8270; /* Accent color: a sophisticated green/gray */
+  opacity: 0;
+   transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.philosophy-text {
+  font-family: 'Open Sans', sans-serif; /* A highly readable font */
+  font-size: 1.1em;
+  line-height: 1.6; /* Generous line height for readability */
+  color: #ffffffff;
+  margin-bottom: 30px;
+}
+
+.tagline {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95em;
+  color: #ffffffff;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+   transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.diamond-icon {
+  font-size: 1.2em;
+  color: #ffffffff; /* Accent color */
+  margin-right: 8px;
+  line-height: 1;
+}
+
+/* Image styling */
+.image-wrapper {
+  max-width: 400px; /* Max width for the image */
+  height: 600px; /* Fixed height for the image wrapper */
+  overflow: hidden; /* Ensures the rounded image stays within bounds */
+  border-radius: 20px; /* Rounded corners for the image wrapper */
+  box-shadow: 0 10px 30px rgba(255, 242, 242, 0.08); /* Subtle shadow */
+  opacity: 0;
+   transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.architecture-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the area, cropping if necessary */
+  display: block; /* Remove extra space below image */
+  border-radius: 20px; /* Rounded corners for the image itself */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .about-us-container {
+    flex-direction: column; /* Stack elements vertically */
+    padding: 30px;
+  }
+
+  .who-we-are-wrapper {
+    flex-direction: row; /* Keep text and line side by side for "WHO WE ARE" */
+    margin-right: 0;
+    margin-bottom: 40px; /* Space after "WHO WE ARE" section */
+    justify-content: center;
+    width: 100%; /* Full width for centering */
+  }
+
+  .who-we-are-heading {
+    font-size: 4em;
+    padding-right: 20px;
+    text-align: center; /* Center text on smaller screens */
+  }
+
+  .vertical-line {
+    height: 150px;
+  }
+
+  .content-wrapper {
+    margin-right: 0;
+    margin-bottom: 40px; /* Space after content */
+    max-width: 100%; /* Allow content to take more width */
+    text-align: center; /* Center text content */
+  }
+
+  .our-philosophy-heading {
+    text-align: center;
+    font-size: 1.8em;
+  }
+
+  .our-philosophy-heading::after {
+    left: 50%; /* Center the underline */
+    transform: translateX(-50%);
+  }
+
+  .philosophy-text {
+    text-align: center;
+  }
+
+  
+
+  .image-wrapper {
+    height: 400px; /* Adjust image height for smaller screens */
+    max-width: 90%; /* Max width for image wrapper */
+    margin: 0 auto; /* Center image */
+  }
+}
+
+@media (max-width: 600px) {
+  .who-we-are-heading {
+    font-size: 3em; /* Smaller font for very small screens */
+    padding-right: 15px;
+  }
+
+  .vertical-line {
+    height: 100px;
+  }
+
+  .our-philosophy-heading {
+    font-size: 1.5em;
+  }
+
+  .philosophy-text {
+    font-size: 1em;
+  }
+
+  .image-wrapper {
+    height: 300px;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

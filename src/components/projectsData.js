@@ -1,5 +1,7 @@
 import housImage from '../assets/house.jpeg';
 import greyHouse from '../assets/greyHouse.jpeg';
+import modernVilla from '../assets/modernVilla.jpeg';
+import modernHouse from '../assets/modern-house.jpeg';
 export default [
   {
     title: "Modern Villa",
@@ -9,14 +11,14 @@ export default [
   },
   {
     title: "Urban Loft",
-    cover: greyHouse,
+    cover: modernHouse,
     description: "An adaptive reuse project in the heart of the city.",
     images: [greyHouse , greyHouse , greyHouse ]
   } ,
   {
     title: "Urban Loft",
-    cover: greyHouse,
-    description: "An adaptive reuse project in the heart of the city.",
+    cover: modernVilla,
+    description: "An adaptive reuse project in the heart of the city. ",
     images: [greyHouse , greyHouse , greyHouse ]
   }
 ];

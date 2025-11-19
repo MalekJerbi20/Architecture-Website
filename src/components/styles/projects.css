@@ -1,102 +1,92 @@
-/* === Global Styles === */
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Cormorant Garamond', serif;
-  background-color: #111;
-  color: white;
 }
 
-/* === Page Wrapper === */
 .projects-page {
-  background: #111;
-  padding: 2rem;
-  min-height: 100vh;
+  background: #000;
   width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
-/* === Slider Wrapper === */
-.projects-slider-wrapper {
+/* === Fullscreen Project View === */
+.project-fullscreen-wrapper {
+  position: relative;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
 }
 
-/* === Slider Container === */
-.projects-slider {
-  margin-top: 10rem;
+.project-fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 1000px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* === Slider Track === */
-.slider-track {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  transition: transform 0.6s ease-in-out;
-}
-
-/* === Project Card === */
-.project-card {
-  flex: 0 0 400px;
-  box-sizing: border-box;
-  padding: 2rem;
-  background-color: #1a1a1a;
-  border: 1px solid #696969;
-  border-radius: 12px;
-  text-align: center;
-  color: white;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  opacity: 0.2;
-  transform: scale(0.9);
+  height: 100%;
+  transition: opacity 0.6s ease;
+  opacity: 0;
   pointer-events: none;
 }
 
-.project-card img {
-  width: 80%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-}
-
-.project-card h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #ccc;
-  margin-top: 0.5rem;
-}
-
-/* === Active Card === */
-.project-card.active {
+.project-fullscreen.visible {
   opacity: 1;
-  transform: scale(1);
   pointer-events: auto;
 }
 
-/* === Previous and Next Cards === */
-.project-card.prev,
-.project-card.next {
-  opacity: 0.5;
-  transform: scale(0.95);
+.fullscreen-image {
+  width: 100%;
+  height: 80%;
+  object-fit: contain;
+  filter: brightness(0.7);
+  margin-top: 10vh;
 }
 
-/* === Hidden Cards === */
-.project-card.hidden {
-  display: none;
+/* === Overlay Info === */
+.project-overlay {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  color: white;
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.project-overlay h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.project-overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.start-btn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.start-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* === Slider Controls === */
 .slider-controls {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: center;
   gap: 1rem;
-  margin-top: 2rem;
 }
 
 .slider-btn {
@@ -107,24 +97,8 @@ body {
   font-size: 1.2rem;
   cursor: pointer;
   transition: background 0.3s ease;
-  font-family: 'Cormorant Garamond', serif;
 }
 
 .slider-btn:hover {
   background: rgba(255, 255, 255, 0.1);
-}
-.projects-title{
-  text-align: center;
-  font-size:2.5rem;
-  color: white;
-  margin-top: 8rem;
-  margin-bottom: -3rem;
-}
-
-.projects-subtitle{
-  text-align: center;
-  font-size:1.2rem;
-  color: #bbb;
-  margin-top: 6rem;
-  margin-bottom: -8rem;
 }

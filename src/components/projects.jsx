@@ -20,65 +20,40 @@ export default function Projects() {
     }
   };
 
-  // ✅ Lock scroll when modal is open
   useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    document.body.style.overflow = selectedProject ? 'hidden' : 'auto';
   }, [selectedProject]);
 
   return (
-    <PageWrapper>
-      <div className="projects-page">
-        <h1 className="projects-title">OUR PROJECTS</h1>
-        <h2 className='projects-subtitle'>Explore Our different creations </h2>
-
-        <div className="projects-slider-wrapper">
-          <div className="projects-slider">
-            <div className="slider-track">
-              {projectsData.map((project, index) => {
-                let cardClass = 'project-card';
-
-                if (index === currentIndex) {
-                  cardClass += ' active';
-                } else if (index === currentIndex - 1) {
-                  cardClass += ' prev';
-                } else if (index === currentIndex + 1) {
-                  cardClass += ' next';
-                } else {
-                  cardClass += ' hidden';
-                }
-
-                return (
-                  <div
-                    key={project.id}
-                    className={cardClass}
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    <img src={project.cover} alt={project.title} />
-                    <h3>{project.title}</h3>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="slider-controls">
-              <button onClick={handlePrev} className="slider-btn">←</button>
-              <button onClick={handleNext} className="slider-btn">→</button>
+    <div className="projects-page">
+      <div className="project-fullscreen-wrapper">
+        {projectsData.map((project, index) => (
+          <div
+            key={project.id}
+            className={`project-fullscreen ${index === currentIndex ? 'visible' : 'hidden'}`}
+            onClick={() => setSelectedProject(project)}
+          >
+            <img src={project.cover} alt={project.title} className="fullscreen-image" />
+            <div className="project-overlay">
+              <h2>{project.title}</h2>
+              <p>{project.category}</p>
+              <button className="start-btn">Start a Project</button>
             </div>
           </div>
-        </div>
-
-        {/* ✅ Full-screen modal with backdrop */}
-        {selectedProject && (
-          <ProjectModal
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        )}
+        ))}
       </div>
-    </PageWrapper>
+
+      <div className="slider-controls">
+        <button onClick={handlePrev} className="slider-btn">←</button>
+        <button onClick={handleNext} className="slider-btn">→</button>
+      </div>
+
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
+    </div>
   );
 }

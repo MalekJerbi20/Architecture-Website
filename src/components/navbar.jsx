@@ -8,7 +8,7 @@ const Navbar = () => {
     <>
     <nav className="navbar">
       <div className="logo">
-        <a href="/">LOGO</a>
+        <a href="/">ALI ARCHITECT</a>
       </div>
       <ul className="navbar-menu">
         <Link to="/about">ABOUT</Link>

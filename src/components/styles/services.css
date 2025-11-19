@@ -1,54 +1,242 @@
-.services-container {
-  padding-top: 6rem; 
-  background-color:black;
-  min-height: 100vh;
-  max-width: 100%;
+/* --- Global Styles & Variables --- */
+:root {
+    --bg-dark: #0f0f0f;
+    --bg-card: #1a1a1a;
+    --bg-philosophy: #141414;
+    --accent-gold: #D4AF37;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --border-color: #2a2a2a;
+    --font-sans: 'Montserrat', sans-serif;
+    --font-serif: 'Lora', serif;
 }
 
-.ourservices{
+/* Import Google Fonts in your main index.html or here */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lora:ital@0;1&display=swap');
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background-color: var(--bg-dark);
+    color: var(--text-secondary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    /* Subtle background pattern */
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* --- Header --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+}
+
+.main-nav {
+    display: flex;
+    gap: 40px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--text-primary);
+}
+
+.main-nav a.active {
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 5px;
+}
+
+/* --- Hero Section --- */
+.hero {
     text-align: center;
-    font-size: 8rem;
-    margin-top: 0.5rem;
-   color: white;
+    padding: 80px 20px;
 }
-.servicesSubTitle {
+
+.hero h1 {
+    font-size: clamp(3rem, 10vw, 5.5rem); /* Responsive font size */
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.hero .sub-headline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--text-secondary);
+    margin: 15px 0 25px;
+}
+
+.hero .intro-paragraph {
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* --- Services Grid --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 60px 0;
+}
+
+.service-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-gold);
+}
+
+.card-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+.service-card h2 {
+    font-size: 22px;
+    color: var(--text-primary);
+    margin: 20px 0 15px;
+}
+
+.service-card p {
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1; /* Pushes icon to the bottom */
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    stroke: #555; /* Muted icon color */
+    align-self: flex-end;
+    margin-top: 30px;
+}
+
+/* --- Process Philosophy --- */
+.process-philosophy {
+    background-color: var(--bg-philosophy);
+    padding: 50px;
+    margin: 60px 0;
     text-align: center;
-    font-size: 1.5rem;
-    margin-top: -4rem;
-    color: white;
-}
-.animated-titles {
-  position: relative;
-  height: 2em;
-  font-size: 5rem;
-  color: gray;
-  margin-top: 10rem;
-  display: inline-block;
-  overflow: hidden;
-  z-index: 1;
-
 }
 
-.animated-titles span {
-  position: fixed;
-  width: 100%;
-  text-align: center;
-  opacity: 0;
-  animation: slide 8s infinite ease-in-out;
-  will-change: transform, opacity;
-
+.process-philosophy h3 {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-secondary);
+    margin: 0 0 30px;
 }
 
-.animated-titles span:nth-child(1) { animation-delay: 0s; }
-.animated-titles span:nth-child(2) { animation-delay: 2s; }
-.animated-titles span:nth-child(3) { animation-delay: 4s; }
-.animated-titles span:nth-child(4) { animation-delay: 6s; }
-
-@keyframes slide {
-  0%   { opacity: 0; transform: translateY(100%); }
-  10%  { opacity: 1; transform: translateY(0); }
-  25%  { opacity: 1; transform: translateY(0); }
-  35%  { opacity: 0; transform: translateY(-100%); }
-  100% { opacity: 0; }
+.philosophy-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
 }
 
+.philosophy-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.philosophy-icon {
+    color: var(--accent-gold);
+    font-size: 20px;
+}
+
+/* --- Call to Action (CTA) Section --- */
+.cta {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.cta h2 {
+    font-size: 36px;
+    color: var(--text-primary);
+    margin: 0 0 15px;
+}
+
+.cta p {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: var(--accent-gold);
+    color: #000;
+    border: none;
+    padding: 18px 40px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #eab948;
+    transform: scale(1.05);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 0 20px;
+    }
+
+    .main-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .philosophy-items {
+        flex-direction: column;
+        gap: 25px;
+    }
+}
