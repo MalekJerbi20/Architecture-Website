@@ -1,0 +1,232 @@
+/* --- Global Variables & Fonts (Matches Services Page) --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Lora:ital@0;1&display=swap');
+
+:root {
+    --bg-dark: #0f0f0f;
+    --bg-card: #1a1a1a;
+    --accent-gold: #D4AF37;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --border-color: #2a2a2a;
+    --font-sans: 'Montserrat', sans-serif;
+    --font-serif: 'Lora', serif;
+}
+
+/* General container */
+.about-us-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 80px 40px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    
+    /* THEME BACKGROUND */
+    background-color: var(--bg-dark);
+    color: var(--text-secondary);
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* --- Who We Are Section --- */
+.who-we-are-wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.who-we-are-heading {
+    font-family: var(--font-sans);
+    font-size: 5.5em;
+    font-weight: 700; /* Bold to match Hero */
+    letter-spacing: 5px;
+    line-height: 1;
+    color: var(--text-primary); /* White */
+    margin: 0;
+    text-align: left;
+    padding-right: 40px;
+    text-transform: uppercase;
+}
+
+.vertical-line {
+    width: 2px;
+    height: 350px;
+    background-color: var(--accent-gold); /* Gold Line */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* --- Content Section --- */
+.content-wrapper {
+    flex: 1;
+    max-width: 550px;
+    margin-right: 60px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.4s;
+}
+
+.our-philosophy-heading {
+    font-family: var(--font-serif); /* Lora for elegance */
+    font-style: italic;
+    font-size: 2.5em;
+    font-weight: 400;
+    color: var(--accent-gold); /* Gold */
+    margin-top: 0;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Underline decoration */
+.our-philosophy-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 1px;
+    background-color: var(--text-secondary);
+}
+
+.philosophy-text {
+    font-family: var(--font-sans);
+    font-size: 1.05em;
+    line-height: 1.8;
+    color: var(--text-secondary); /* Grey text */
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.tagline {
+    font-family: var(--font-sans);
+    font-size: 0.95em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.diamond-icon {
+    font-size: 1.2em;
+    color: var(--accent-gold); /* Gold Icon */
+    margin-right: 12px;
+    line-height: 1;
+}
+
+/* --- Image Section --- */
+.image-wrapper {
+    max-width: 450px;
+    height: 600px;
+    overflow: hidden;
+    /* Removed rounded corners to match the sharp architectural style */
+    border: 1px solid var(--border-color); 
+    background-color: var(--bg-card);
+    padding: 10px; /* Frame effect */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.6s;
+    transition: border-color 0.3s ease;
+}
+
+.image-wrapper:hover {
+    border-color: var(--accent-gold);
+}
+
+.architecture-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%); /* Slight vintage/arch look */
+    transition: filter 0.5s ease;
+}
+
+.image-wrapper:hover .architecture-image {
+    filter: grayscale(0%);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .about-us-container {
+        flex-direction: column;
+        padding: 60px 20px;
+        height: auto;
+    }
+
+    .who-we-are-wrapper {
+        flex-direction: row;
+        margin-right: 0;
+        margin-bottom: 50px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .who-we-are-heading {
+        font-size: 4em;
+        padding-right: 20px;
+        text-align: center;
+    }
+
+    .vertical-line {
+        height: 150px;
+    }
+
+    .content-wrapper {
+        margin-right: 0;
+        margin-bottom: 50px;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .our-philosophy-heading::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .tagline {
+        justify-content: center;
+    }
+
+    .image-wrapper {
+        height: 450px;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .who-we-are-heading {
+        font-size: 3em;
+        letter-spacing: 2px;
+    }
+
+    .vertical-line {
+        height: 100px;
+    }
+
+    .our-philosophy-heading {
+        font-size: 2em;
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

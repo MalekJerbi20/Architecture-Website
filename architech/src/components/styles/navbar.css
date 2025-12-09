@@ -1,0 +1,49 @@
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: black; 
+  background-color: transparent;
+   position: fixed; /* or fixed if you want it to stay on scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  overflow: hidden;
+
+  
+  
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: bold; 
+  color: white;
+  text-decoration: none;
+font-family: 'Cormorant Garamond', serif;  
+}
+
+
+
+.navbar-menu a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: bold;
+  margin-right: 5rem;
+  
+}
+
+.navbar-menu a:hover {
+  color: #929292ff;
+  
+}
+.navbar-menu {
+  display: flex;
+  gap: 3rem;
+   flex-wrap: nowrap;
+}

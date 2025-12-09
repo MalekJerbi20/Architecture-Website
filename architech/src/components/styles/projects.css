@@ -1,0 +1,219 @@
+/* --- Global Variables & Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Lora:ital@0;1&display=swap');
+
+:root {
+    --bg-dark: #0f0f0f;
+    --accent-gold: #D4AF37;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --font-sans: 'Montserrat', sans-serif;
+    --font-serif: 'Lora', serif;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-dark);
+    font-family: var(--font-sans);
+}
+
+.projects-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+    /* Subtle Grid */
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.project-fullscreen-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Slide Container --- */
+.project-fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Push image to right */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+    padding-right: 5%; /* Gap on right */
+    box-sizing: border-box;
+}
+
+.project-fullscreen.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- Giant Background Number (Fills empty space) --- */
+.giant-number {
+    position: absolute;
+    top: 50%;
+    left: 5%; /* Anchor to left */
+    transform: translateY(-50%);
+    font-family: var(--font-sans);
+    font-size: 25vw; /* Massive size */
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.03); /* Very faint */
+    z-index: 0;
+    line-height: 0;
+    pointer-events: none;
+}
+
+/* --- The Image (Cinematic Size) --- */
+.fullscreen-image {
+    width: 65vw; /* Takes up 65% of width */
+    height: 80vh;
+    object-fit: cover;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    filter: brightness(0.85); /* Slightly dark to pop text */
+    transition: all 0.6s ease;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.project-fullscreen:hover .fullscreen-image {
+    filter: brightness(1);
+    transform: scale(1.01);
+}
+
+/* --- Text Overlay (Overlapping) --- */
+.project-overlay {
+    position: absolute;
+    left: 10%; /* Overlap the left side */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10; /* Sit on top of image */
+    max-width: 500px;
+    background: rgba(15, 15, 15, 0.6); /* Semi-transparent dark bg */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    padding: 40px;
+    border-left: 3px solid var(--accent-gold);
+}
+
+.project-category {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--accent-gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.project-title {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    color: var(--text-primary);
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+    font-style: italic;
+    cursor: pointer;
+}
+
+/* Short description snippet */
+.project-excerpt {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.start-btn {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 15px 30px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-btn:hover {
+    background: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: #000;
+}
+
+/* --- Controls --- */
+.slider-controls {
+    position: absolute;
+    bottom: 40px;
+    left: 10%; /* Align with text */
+    display: flex;
+    gap: 20px;
+    z-index: 20;
+}
+
+.slider-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    width: 90px;
+    height: 50px;
+    border-radius: 5%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .project-fullscreen {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-right: 0;
+    }
+    
+    .giant-number {
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40vw;
+    }
+
+    .fullscreen-image {
+        width: 100%;
+        height: 50vh;
+        margin-top: 0;
+    }
+
+    .project-overlay {
+        position: relative;
+        left: 0;
+        top: -50px; /* Pull up to overlap image */
+        transform: none;
+        width: 85%;
+        margin: 0 auto;
+        background: var(--bg-dark); /* Solid bg on mobile */
+        border: 1px solid #333;
+    }
+}

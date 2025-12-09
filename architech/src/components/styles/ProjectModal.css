@@ -1,0 +1,209 @@
+/* --- Variables (Matching your system) --- */
+:root {
+  --bg-dark: #0f0f0f;
+  --bg-panel: #141414;
+  --accent-gold: #D4AF37;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-serif: 'Lora', serif;
+}
+
+/* === Modal Overlay === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9); /* Darker, more immersive */
+  backdrop-filter: blur(8px); /* stronger blur */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 40px; /* Gap around the modal */
+  box-sizing: border-box;
+}
+
+/* === Main Modal Container (The Split View) === */
+.modal-content {
+  background-color: var(--bg-dark);
+  width: 100%;
+  max-width: 1400px; /* Wider to accommodate split view */
+  height: 90vh; /* Takes up most of the screen height */
+  display: flex; /* FLEXBOX SPLIT */
+  flex-direction: row;
+  border: 1px solid #333;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.7);
+  overflow: hidden; /* Contains the scrollable areas */
+  position: relative;
+}
+
+/* === LEFT SIDE: Scrollable Image Gallery === */
+.modal-gallery-section {
+  flex: 1.5; /* Takes 60% of width */
+  height: 100%;
+  overflow-y: auto; /* Internal scroll */
+  background-color: #000;
+  
+  /* Hide scrollbar for cleaner look */
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE */
+}
+
+.modal-gallery-section::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.modal-image-wrapper {
+  width: 100%;
+  margin-bottom: 5px; /* Tiny gap between stacked images */
+}
+
+.modal-image-wrapper img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  /* Optional: filter brightness to make text panel pop more? No, let images shine. */
+}
+
+/* === RIGHT SIDE: Project Info Panel === */
+.modal-info-section {
+  flex: 1; /* Takes 40% of width */
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+  /* Signature Grid Background */
+  background-color: var(--bg-panel);
+  background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  
+  overflow-y: auto; /* Allow text to scroll if it's very long */
+}
+
+/* Typography & Elements */
+.modal-category {
+  font-family: var(--font-sans);
+  color: var(--accent-gold);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.modal-content h2 {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-style: italic;
+  color: var(--text-primary);
+  margin: 0 0 30px 0;
+  line-height: 1.1;
+}
+
+/* Decorative Gold Line */
+.modal-divider {
+  width: 60px;
+  height: 2px;
+  background-color: var(--accent-gold);
+  margin-bottom: 30px;
+}
+
+.modal-content p {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  max-width: 90%;
+}
+
+/* External Link */
+.project-link {
+  display: inline-block;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-gold);
+  padding-bottom: 5px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  align-self: flex-start;
+  transition: opacity 0.3s;
+}
+
+.project-link:hover {
+  opacity: 0.7;
+}
+
+/* === Close Button (Square & Sharp) === */
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  border: none;
+  border-left: 1px solid #333;
+  border-bottom: 1px solid #333;
+  color: #fff;
+  font-size: 1.5rem; /* Make the 'X' or text larger */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.close-btn:hover {
+  background-color: var(--accent-gold);
+  color: #000;
+  border-color: var(--accent-gold);
+}
+
+
+/* === Responsive Mobile Design === */
+@media (max-width: 900px) {
+  .modal-overlay {
+    padding: 0; /* Full screen on mobile */
+  }
+
+  .modal-content {
+    flex-direction: column; /* Stack Vertically */
+    height: 100vh;
+    max-width: 100%;
+    border: none;
+  }
+
+  .modal-gallery-section {
+    flex: 1; /* Image on top */
+    order: 1; 
+  }
+
+  .modal-info-section {
+    flex: 1; /* Text on bottom */
+    order: 2;
+    padding: 30px;
+  }
+
+  .modal-content h2 {
+    font-size: 2.5rem;
+  }
+  
+  .close-btn {
+    position: fixed; /* Stick to top right even on scroll */
+    z-index: 100;
+    background: rgba(0,0,0,0.5); /* Background so it's visible over images */
+    border: none;
+  }
+}
