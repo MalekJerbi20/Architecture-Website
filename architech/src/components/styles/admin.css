@@ -1,0 +1,349 @@
+/* --- Global Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Lora:ital@0;1&display=swap');
+
+:root {
+  --bg-dark: #0f0f0f;
+  --bg-panel: #1a1a1a;
+  --accent-gold: #D4AF37;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --border-color: #333;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-serif: 'Lora', serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background-color: var(--bg-dark);
+}
+
+/* --- Layout --- */
+.admin-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    
+    /* Signature Grid Background */
+    background-color: var(--bg-dark);
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* --- Control Panel Card --- */
+.admin-card {
+    background-color: var(--bg-panel);
+    width: 100%;
+    max-width: 600px;
+    padding: 50px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    position: relative;
+    
+    /* Cinematic Entrance */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Header */
+.admin-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.admin-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin: 0 0 10px 0;
+    font-style: italic;
+}
+
+.admin-subtitle {
+    font-family: var(--font-sans);
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- Form Elements --- */
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.admin-input, 
+.admin-textarea {
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.admin-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.admin-input:focus, 
+.admin-textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    background-color: rgba(0,0,0,0.6);
+}
+
+/* --- File Upload Styling --- */
+.file-upload-wrapper {
+    position: relative;
+    border: 1px dashed var(--border-color);
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.file-upload-wrapper:hover {
+    border-color: var(--accent-gold);
+}
+
+.file-input {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.file-input::file-selector-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+}
+
+.file-input::file-selector-button:hover {
+    background-color: var(--accent-gold);
+    color: black;
+}
+
+/* --- Image Preview --- */
+.preview-container {
+    margin-top: 15px;
+    border: 1px solid var(--accent-gold);
+    padding: 15px;
+    background: #000;
+}
+
+.preview-label {
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid #333;
+    transition: transform 0.2s;
+    border-radius: 4px;
+}
+
+.preview-image:hover {
+    transform: scale(1.05);
+    border-color: var(--accent-gold);
+    z-index: 2;
+}
+
+/* --- Submit Button --- */
+.admin-btn {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--text-secondary);
+    padding: 18px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.admin-btn:hover {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   NEW SECTIONS: Inventory List & Actions
+   ========================================= */
+
+/* --- Project Inventory Section --- */
+.inventory-section {
+    width: 100%;
+    max-width: 1000px; /* Wider than form for grid */
+    margin-top: 60px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+}
+
+.inventory-header {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Inventory Card */
+.inventory-card {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inventory-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-5px);
+}
+
+.inv-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    filter: brightness(0.8);
+}
+
+.inventory-card:hover .inv-image {
+    filter: brightness(1);
+}
+
+.inv-title {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.inv-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Truncate text after 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Action Buttons (Edit / Delete) */
+.inv-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 10px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid #444;
+    transition: all 0.2s;
+    background: transparent;
+}
+
+.edit-btn {
+    color: var(--text-primary);
+}
+.edit-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.delete-btn {
+    color: #ff4d4d; /* Red warning color */
+    border-color: #522;
+}
+.delete-btn:hover {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+/* Cancel Button (Inside Form) */
+.cancel-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    width: 100%;
+}
+.cancel-btn:hover {
+    color: white;
+}
+
+/* --- Animation --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}

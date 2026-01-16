@@ -1,4 +1,4 @@
-/* --- Global Variables & Fonts (Matches Services/About) --- */
+/* --- Global Variables & Fonts --- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Lora:ital@0;1&display=swap');
 
 :root {
@@ -56,6 +56,10 @@
     margin: 0 0 20px 0;
     text-transform: uppercase;
     letter-spacing: 2px;
+    
+    /* Animation: First to appear */
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .contact-sub-headline {
@@ -64,11 +68,21 @@
     font-size: 1.5rem;
     color: var(--text-secondary);
     margin-bottom: 50px;
+    
+    /* Animation: Second */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
 }
 
 .info-grid {
     display: grid;
     gap: 40px;
+    
+    /* Animation: Third */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
 }
 
 .info-item h3 {
@@ -105,6 +119,11 @@
     border: 1px solid var(--border-color);
     padding: 50px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    
+    /* Animation: Last to appear */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
 }
 
 .contact-form {
@@ -216,5 +235,17 @@
     .submit-button {
         width: 100%; /* Full width button on mobile */
         text-align: center;
+    }
+}
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

@@ -12,7 +12,6 @@
     --font-serif: 'Lora', serif;
 }
 
-/* General container */
 .about-us-container {
     display: flex;
     justify-content: center;
@@ -32,7 +31,6 @@
     background-size: 40px 40px;
 }
 
-/* --- Who We Are Section --- */
 .who-we-are-wrapper {
     display: flex;
     align-items: center;
@@ -65,7 +63,6 @@
     animation-delay: 0.2s;
 }
 
-/* --- Content Section --- */
 .content-wrapper {
     flex: 1;
     max-width: 550px;
@@ -77,11 +74,11 @@
 }
 
 .our-philosophy-heading {
-    font-family: var(--font-serif); /* Lora for elegance */
+    font-family: var(--font-serif); 
     font-style: italic;
     font-size: 2.5em;
     font-weight: 400;
-    color: var(--accent-gold); /* Gold */
+    color: var(--accent-gold); 
     margin-top: 0;
     margin-bottom: 25px;
     letter-spacing: 0.5px;
@@ -89,7 +86,6 @@
     padding-bottom: 15px;
 }
 
-/* Underline decoration */
 .our-philosophy-heading::after {
     content: '';
     position: absolute;
@@ -104,7 +100,7 @@
     font-family: var(--font-sans);
     font-size: 1.05em;
     line-height: 1.8;
-    color: var(--text-secondary); /* Grey text */
+    color: var(--text-secondary); 
     margin-bottom: 30px;
     font-weight: 400;
 }
@@ -122,20 +118,18 @@
 
 .diamond-icon {
     font-size: 1.2em;
-    color: var(--accent-gold); /* Gold Icon */
+    color: var(--accent-gold); 
     margin-right: 12px;
     line-height: 1;
 }
 
-/* --- Image Section --- */
 .image-wrapper {
     max-width: 450px;
     height: 600px;
     overflow: hidden;
     /* Removed rounded corners to match the sharp architectural style */
     border: 1px solid var(--border-color); 
-    background-color: var(--bg-card);
-    padding: 10px; /* Frame effect */
+    padding: 5px; /* Frame effect */
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1s ease-out forwards;
